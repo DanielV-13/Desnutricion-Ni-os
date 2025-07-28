@@ -17,6 +17,12 @@ public class Persona {
         this.sexo=sexo;
     }
 
+    //Getter para acceder a los nombres
+    public String getNombres(){
+        return nombres;
+    }
+
+
 
 
 }
