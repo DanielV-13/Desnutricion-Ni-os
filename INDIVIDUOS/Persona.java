@@ -32,6 +32,4 @@ public abstract class Persona {
     public abstract Boolean validarDatos();
     public abstract String mostrarResumen();
 
-
-
 }
