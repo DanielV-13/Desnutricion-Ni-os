@@ -8,7 +8,7 @@ public class Neumococo implements Vacuna {
     private String nombreVacuna;
     private int dosisAdministradas;
     private int dosisRequeridas;
-    private float porcentajeVacunacion;
+    private double porcentajeVacunacion;
 
     //CONSTRUCTOR
     public Neumococo(Niño niño,int dosisAdministradas) {
@@ -21,7 +21,7 @@ public class Neumococo implements Vacuna {
         //METODOS
         //Metodo de la Interfaz
         @Override
-        public float calcularPorcentajeVacunacion(){
+        public double calcularPorcentajeVacunacion(){
 
             int dosiscompletas=6;
             porcentajeVacunacion= (dosisAdministradas/dosiscompletas)*100;
@@ -47,11 +47,23 @@ public class Neumococo implements Vacuna {
         }
     }
 
-    public void setDosisRequeridas(int dosisRequeridas) {
-        this.dosisRequeridas =calcularDosisRequeridas() ; //Llamamos al metodo que calcula las Dosis Requeridas
+    public void setDosisRequeridas() {
+        dosisRequeridas =calcularDosisRequeridas() ; //Llamamos al metodo que calcula las Dosis Requeridas
     }
 
-    public float getPorcentajeVacunacion() {
+    public void verificarAlertaDosis() {
+        int dosisRequeridas = calcularDosisRequeridas();
+        if (dosisAdministradas != dosisRequeridas) {
+            System.out.println("Alerta: El niño no ha recibido todas las dosis de Neumococo requeridas para su mes de vida" +
+                    "Dosis administradas: " + dosisAdministradas +
+                    ", Dosis requeridas: " + dosisRequeridas);
+        } else {
+            System.out.println("El esquema de vacunación de Neumococo está completo y al día.");
+        }
+    }
+
+
+    public double getPorcentajeVacunacion() {
 
         return porcentajeVacunacion;
     }

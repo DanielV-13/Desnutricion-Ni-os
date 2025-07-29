@@ -10,7 +10,7 @@ public class Madre extends Persona {
 
     //Constructor usando los atributos de la clase Persona y de Madre
     public Madre(String nombres, String apellidos, String cedula, String sexo,String telefono,String domicilio, int sesionesEducacion) {
-        super(nombres, apellidos, cedula, sexo); //Constructor de la clase Persona
+        super(nombres, apellidos, cedula); //Constructor de la clase Persona
         this.telefono = telefono;
         this.domicilio = domicilio;
         this.sesionesEducacion = 0; //Inicializamos meses de vida en 0
@@ -24,7 +24,6 @@ public class Madre extends Persona {
         System.out.println("Nombres: "+nombres);
         System.out.println("Apellidos: "+apellidos);
         System.out.println("Cedula: "+cedula);
-        System.out.println("Sexo: "+sexo);
         System.out.println("Telefono: "+telefono);
         System.out.println("Domicilio: "+domicilio);
         System.out.println("Sesiones Educacion: "+ sesionesEducacion);

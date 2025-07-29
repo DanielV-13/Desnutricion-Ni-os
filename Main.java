@@ -2,6 +2,9 @@
 //Recordar que las clases estan dentro de los paquetes
 import INDIVIDUOS.Niño;
 import INDIVIDUOS.Madre;
+import KPIs.Neumococo;
+import KPIs.Rotavirus;
+import KPIs.TallaEdad;
 
 import java.util.Scanner; //Usaremos Scanner
 
@@ -27,7 +30,7 @@ public class Main {
    System.out.print("Lugar Nacimiento: ");
    String lugarNacimiento=sc.nextLine();
 
-   System.out.print("Talla (en metros): ");
+   System.out.print("Talla (en cm): ");
    double talla=sc.nextDouble();
 
    //CONSTRUCTOR DE NIÑO
@@ -93,10 +96,10 @@ public class Main {
 
 //-------M A D R E ------
         System.out.println("Ingrese los datos de la madre");
-        System.out.print("Nombres: ");
+        System.out.println("Nombres: ");
         String names=sc.nextLine();
 
-        System.out.print("Apellidos: ");
+        System.out.println("Apellidos: ");
         String lastname=sc.nextLine();
 
         System.out.print("Cedula (10 digitos): ");
@@ -117,6 +120,39 @@ public class Main {
         //CONSTRUCTOR DE MADRE
         //Objeto se llama ob2
         Madre ob2= new Madre(names,lastname,ID,gender,telefono,domicilio,sesionesEducacion);
+
+        //--------KPIS-----------
+        // Crear objeto TallaEdad con el niño
+        TallaEdad tallaEdad = new TallaEdad(ob1);
+        double zScore = tallaEdad.calcularzScore();
+        System.out.println("Z-Score Talla/Edad: " + zScore);
+        tallaEdad.analizarZScore();  // Muestra mensajes según Z-score
+
+// Pedir dosis para Rotavirus
+        System.out.print("Ingrese el número de dosis administradas de Rotavirus: ");
+        int dosisRotavirus = sc.nextInt();
+        Rotavirus rotavirus = new Rotavirus(ob1,dosisRotavirus);
+        rotavirus.verificarAlertaDosis();
+        double porcentajeRotavirus = rotavirus.getPorcentajeVacunacion();
+        System.out.println("Porcentaje vacunación Rotavirus: " + porcentajeRotavirus + "%");
+
+// Pedir dosis para Neumococo
+        System.out.print("Ingrese el número de dosis administradas de Neumococo: ");
+        int dosisNeumococo = sc.nextInt();
+        Neumococo neumococo = new Neumococo(ob1,dosisNeumococo);
+        neumococo.verificarAlertaDosis();
+        double porcentajeNeumococo = neumococo.getPorcentajeVacunacion();
+        System.out.println("Porcentaje vacunación Neumococo: " + porcentajeNeumococo + "%");
+
+
+
+
+
+
+
+
+
+
 
     }
 }

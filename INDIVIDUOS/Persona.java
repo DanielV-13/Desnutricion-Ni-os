@@ -8,16 +8,14 @@ public abstract class Persona {
     protected String nombres;
     protected String apellidos;
     protected String cedula;
-    protected String sexo;
 
     //Creamos un CONSTRUCTOR
     //Este constructor podra ser usado por las clases hijas
     //Recordar que una clase abstracta no puede ser instanciada
-    public Persona(String nombres, String apellidos, String cedula, String sexo) {
+    public Persona(String nombres, String apellidos, String cedula) {
         this.nombres=nombres;
         this.apellidos=apellidos;
         this.cedula=cedula;
-        this.sexo=sexo;
     }
 
     //Getter para acceder a los nombres
