@@ -9,7 +9,7 @@ public class Madre extends Persona {
     private int sesionesEducacion;
 
     //Constructor usando los atributos de la clase Persona y de Madre
-    public Madre(String nombres, String apellidos, String cedula, String sexo,String telefono,String domicilio, int sesionesEducacion) {
+    public Madre(String nombres, String apellidos, String cedula,String telefono,String domicilio, int sesionesEducacion) {
         super(nombres, apellidos, cedula); //Constructor de la clase Persona
         this.telefono = telefono;
         this.domicilio = domicilio;

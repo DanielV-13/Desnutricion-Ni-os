@@ -26,8 +26,8 @@ public class Rotavirus implements Vacuna {
     public double calcularPorcentajeVacunacion(){
 
         int dosiscompletas=2; //Solo son 2 dosis de Rotavirus
-        porcentajeVacunacion= (dosisAdministradas/dosiscompletas)*100;
-        System.out.println("El porcentaje de Vacunacion de Rotavirus del Niño es de: ");
+        porcentajeVacunacion= ((double)dosisAdministradas/dosiscompletas)*100;
+        porcentajeVacunacion = Math.round(porcentajeVacunacion); // Redondeo a solo parte entera
 
         return porcentajeVacunacion;
     }
@@ -53,11 +53,11 @@ public class Rotavirus implements Vacuna {
     public void verificarAlertaDosis() {
         int dosisRequeridas = calcularDosisRequeridas();
         if (dosisAdministradas != dosisRequeridas) {
-            System.out.println("Alerta: El niño no ha recibido todas las dosis de Neumococo requeridas para su mes de vida" +
-                    "Dosis administradas: " + dosisAdministradas +
-                    ", Dosis requeridas: " + dosisRequeridas);
+            System.out.println("Alerta: El niño no ha recibido todas las dosis de Rotavirus requeridas para su mes de vida");
+            System.out.println("Dosis administradas: " + dosisAdministradas);
+            System.out.println(", Dosis requeridas: " + dosisRequeridas);
         } else {
-            System.out.println("El esquema de vacunación de Neumococo está completo y al día.");
+            System.out.println("El esquema de vacunación de Rotavirus está completo y al día segun el mes de vida del niño");
         }
     }
 

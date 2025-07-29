@@ -95,18 +95,20 @@ public class Main {
         ob1.calcularMesVida(diaact,mesact, añoact);
 
 //-------M A D R E ------
+
+        // --- LIMPIAR BUFFER ANTES DE USAR nextLine ---
+        sc.nextLine(); // <<< ESTA LÍNEA ES CLAVE
+
+        System.out.println("");
         System.out.println("Ingrese los datos de la madre");
-        System.out.println("Nombres: ");
+        System.out.print("Nombres: ");
         String names=sc.nextLine();
 
-        System.out.println("Apellidos: ");
+        System.out.print("Apellidos: ");
         String lastname=sc.nextLine();
 
         System.out.print("Cedula (10 digitos): ");
         String ID=sc.nextLine();
-
-        System.out.print("Sexo (Masculino/Femenino): ");
-        String gender=sc.nextLine();
 
         System.out.print("Domocilio: ");
         String domicilio=sc.nextLine();
@@ -119,36 +121,41 @@ public class Main {
 
         //CONSTRUCTOR DE MADRE
         //Objeto se llama ob2
-        Madre ob2= new Madre(names,lastname,ID,gender,telefono,domicilio,sesionesEducacion);
+        Madre ob2= new Madre(names,lastname,ID,telefono,domicilio,sesionesEducacion);
 
         //--------KPIS-----------
         // Crear objeto TallaEdad con el niño
         TallaEdad tallaEdad = new TallaEdad(ob1);
         double zScore = tallaEdad.calcularzScore();
+        System.out.println("");
+        System.out.println("ESTOS SON LOS KPIs");
         System.out.println("Z-Score Talla/Edad: " + zScore);
         tallaEdad.analizarZScore();  // Muestra mensajes según Z-score
 
 // Pedir dosis para Rotavirus
+        System.out.println("");
         System.out.print("Ingrese el número de dosis administradas de Rotavirus: ");
         int dosisRotavirus = sc.nextInt();
-        Rotavirus rotavirus = new Rotavirus(ob1,dosisRotavirus);
+        Rotavirus rotavirus = new Rotavirus(ob1,dosisRotavirus); //OBJETO ROTAVIRUS
+
+        rotavirus.setDosisRequeridas();
         rotavirus.verificarAlertaDosis();
+        rotavirus.calcularPorcentajeVacunacion(); //Calculamos el porcentaje de vacunacion
         double porcentajeRotavirus = rotavirus.getPorcentajeVacunacion();
-        System.out.println("Porcentaje vacunación Rotavirus: " + porcentajeRotavirus + "%");
+        System.out.println("Porcentaje total de vacunación Rotavirus: " + porcentajeRotavirus + "%");
 
 // Pedir dosis para Neumococo
+        System.out.println("");
         System.out.print("Ingrese el número de dosis administradas de Neumococo: ");
         int dosisNeumococo = sc.nextInt();
-        Neumococo neumococo = new Neumococo(ob1,dosisNeumococo);
+        Neumococo neumococo = new Neumococo(ob1,dosisNeumococo); //OBJETO NEUMOCOCO
+
+        neumococo.setDosisRequeridas();
         neumococo.verificarAlertaDosis();
+        neumococo.calcularPorcentajeVacunacion(); //Calculamos el porcentaje de vacunacion
+
         double porcentajeNeumococo = neumococo.getPorcentajeVacunacion();
-        System.out.println("Porcentaje vacunación Neumococo: " + porcentajeNeumococo + "%");
-
-
-
-
-
-
+        System.out.println("Porcentaje total de vacunación Neumococo: " + porcentajeNeumococo + "%");
 
 
 
