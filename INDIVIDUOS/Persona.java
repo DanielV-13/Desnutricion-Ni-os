@@ -30,6 +30,6 @@ public abstract class Persona {
     //Metodos abstractos
     //Son metodos solo Declarados sin cuerpo
     public abstract Boolean validarDatos();
-    public abstract String mostrarResumen();
+    public abstract void mostrarResumen();
 
 }
