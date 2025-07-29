@@ -11,12 +11,12 @@ public class Niño extends Persona {
     private double talla;
     private String lugarNacimiento;
     private int mesesVida;
-    //LinkedList para fecha de Nacimiento con su respectivo Iterador
+    //LinkedList para fecha de Nacimiento
     public LinkedList<Integer>fechaNacimiento;
-    public ListIterator<Integer>iterador;
 
 
-    //Constructor usando la clase Persona
+
+    //Constructor usando los atributos de la clase Persona y de Niño
     public Niño(String nombres, String apellidos, String cedula, String sexo,double talla, String lugarNacimiento) {
         super(nombres, apellidos, cedula, sexo); //Constructor de la clase Persona
         this.lugarNacimiento=lugarNacimiento;
@@ -26,13 +26,7 @@ public class Niño extends Persona {
     }
 
 
-    //Implementar metodos abstractos
-
-    //FALTA ESTO
-    public Boolean validarDatos(){
-        Boolean verdad= Boolean.TRUE;
-        return verdad;
-    }
+    //Implementar METODOS ABSTRACTOS
 
     public void mostrarResumen(){
         System.out.println("Estos son los datos del niño");
@@ -43,7 +37,7 @@ public class Niño extends Persona {
         System.out.println("Talla: "+talla);
         System.out.println("Lugar de Nacimiento: "+lugarNacimiento);
         System.out.println("Meses de Vida: "+ mesesVida);
-        System.out.println("dia, mes, año (Nacimiento) :"+fechaNacimiento);
+        System.out.println("Fecha de Nacimiento :"+fechaNacimiento);
     }
 
 
@@ -95,7 +89,6 @@ public class Niño extends Persona {
             mesesVida = totalMeses;
         }
     }
-
 
 
 }
