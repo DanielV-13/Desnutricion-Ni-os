@@ -17,11 +17,11 @@ public class Niño extends Persona {
 
 
     //Constructor usando la clase Persona
-    public Niño(String nombres, String apellidos, String cedula, String sexo,double talla, String lugarNacimiento, int mesesVida) {
+    public Niño(String nombres, String apellidos, String cedula, String sexo,double talla, String lugarNacimiento) {
         super(nombres, apellidos, cedula, sexo); //Constructor de la clase Persona
         this.lugarNacimiento=lugarNacimiento;
         this.talla=talla;
-        this.mesesVida=mesesVida;
+        this.mesesVida=0; //Inicializamos meses de vida en 0
         this.fechaNacimiento = new LinkedList<>(); //Inicializar la linkedList
     }
 

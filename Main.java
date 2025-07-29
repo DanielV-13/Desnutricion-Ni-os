@@ -13,7 +13,26 @@ public class Main {
    //Objeto de tipo Scanner
    Scanner sc=new Scanner(System.in);
 
-    Niño ob1= new Niño("Juan Nada","Castro Lema","09943233","No Binario",14.5,"Guatemala",9);
+   System.out.println("Ingrese los datos del niño");
+   System.out.println("Nombres");
+   String nombres=sc.nextLine();
+   System.out.println("Apellidos");
+   String apellidos=sc.nextLine();
+   System.out.println("Cedula");
+   String cedula=sc.nextLine();
+   System.out.println("Sexo");
+   String sexo=sc.nextLine();
+   System.out.println("Lugar Nacimiento");
+   String lugarNacimiento=sc.nextLine();
+   System.out.println("Talla");
+   double talla=sc.nextDouble();
+
+   System.out.println("");
+   System.out.println("Ahora proporcione los datos de fecha");
+
+
+
+    Niño ob1= new Niño(nombres,apellidos,cedula,sexo,talla,lugarNacimiento);
         System.out.println(ob1.getNombres());
 
         System.out.println("Ingrese el dia de nacimiento");
