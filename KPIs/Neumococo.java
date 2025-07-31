@@ -1,6 +1,7 @@
 package KPIs;
 
 import INDIVIDUOS.Niño;
+import java.util.Scanner; //Usaremos Scanner en esta clase
 
 public class Neumococo implements Vacuna {
     //ATRIBUTOS
@@ -51,6 +52,7 @@ public class Neumococo implements Vacuna {
         dosisRequeridas =calcularDosisRequeridas() ; //Llamamos al metodo que calcula las Dosis Requeridas
     }
 
+
     public void verificarAlertaDosis() {
         int dosisRequeridas = calcularDosisRequeridas();
         if (dosisAdministradas != dosisRequeridas) {
@@ -63,10 +65,12 @@ public class Neumococo implements Vacuna {
         }
     }
 
-
-    public double getPorcentajeVacunacion() {
-
-        return porcentajeVacunacion;
+    //Metodo que llama a los demas metodos para procesar los datos de la vacuna
+    //Metodo void que hace los calculos por detras
+    public void procesarVacuna() {
+        this.setDosisRequeridas();
+        this.verificarAlertaDosis();
+        this.calcularPorcentajeVacunacion();
     }
 
 

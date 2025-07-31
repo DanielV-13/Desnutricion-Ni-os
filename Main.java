@@ -14,33 +14,31 @@ public class Main {
    Scanner sc=new Scanner(System.in);
 
    //------N I Ñ O ---------------
+   //INGRESAMOS DATOS DEL NIÑO
+
    System.out.println("Ingrese los datos del niño");
    System.out.print("Nombres: ");
    String nombres=sc.nextLine();
-
    System.out.print("Apellidos: ");
    String apellidos=sc.nextLine();
-
    System.out.print("Cedula (10 digitos): ");
    String cedula=sc.nextLine();
-
    System.out.print("Sexo (Masculino/Femenino): ");
    String sexo=sc.nextLine();
-
    System.out.print("Lugar Nacimiento: ");
    String lugarNacimiento=sc.nextLine();
-
    System.out.print("Talla (en cm): ");
    double talla=sc.nextDouble();
 
    //CONSTRUCTOR DE NIÑO
-        //Objeto se llama ob1
-    Niño ob1= new Niño(nombres,apellidos,cedula,sexo,talla,lugarNacimiento);
+        //Objeto se llama niño (en minuscula)
+    Niño niño= new Niño(nombres,apellidos,cedula,sexo,talla,lugarNacimiento);
 
-
+    //-----INGRESO de FECHAS-----
         System.out.println("");
         System.out.println("Ahora proporcione los datos de fecha");
 
+        //FECHA NACIMIENTO
 // Validar día entre 1 y 31
         System.out.print("Ingrese el día de nacimiento (1-31): ");
         int dia = sc.nextInt();
@@ -64,9 +62,9 @@ public class Main {
         int año = sc.nextInt();
 
 //Llenamos los datos en la LinkedList fechaNacimiento
-        ob1.llenarNacimiento(dia, mes, año);
+        niño.llenarNacimiento(dia, mes, año);
 
-
+//---------------FECHA ACTUAL---------------
         System.out.println("");
 
         // Validar día entre 1 y 31
@@ -92,7 +90,7 @@ public class Main {
         int añoact=sc.nextInt();
 
        //Calculamos los meses de vida del niño
-        ob1.calcularMesVida(diaact,mesact, añoact);
+        niño.calcularMesVida(diaact,mesact, añoact);
 
 //-------M A D R E ------
 
@@ -103,19 +101,14 @@ public class Main {
         System.out.println("Ingrese los datos de la madre");
         System.out.print("Nombres: ");
         String names=sc.nextLine();
-
         System.out.print("Apellidos: ");
         String lastname=sc.nextLine();
-
         System.out.print("Cedula (10 digitos): ");
         String ID=sc.nextLine();
-
         System.out.print("Domocilio: ");
         String domicilio=sc.nextLine();
-
         System.out.print("Numero de Telefono: ");
         String telefono=sc.nextLine();
-
         System.out.print("Sesiones de Educacion: ");
         int sesionesEducacion=sc.nextInt();
 
@@ -124,42 +117,36 @@ public class Main {
         Madre ob2= new Madre(names,lastname,ID,telefono,domicilio,sesionesEducacion);
 
         //--------KPIS-----------
+        // ------TALLA EDAD-------
         // Crear objeto TallaEdad con el niño
-        TallaEdad tallaEdad = new TallaEdad(ob1);
-        double zScore = tallaEdad.calcularzScore();
-        System.out.println("");
-        System.out.println("ESTOS SON LOS KPIs");
-        System.out.println("Z-Score Talla/Edad: " + zScore);
-        tallaEdad.analizarZScore();  // Muestra mensajes según Z-score
+        TallaEdad tallaEdad = new TallaEdad(niño);
+        tallaEdad.mostrarKPI(); // Muestra mensajes según Z-score
 
+
+//       ------ROTAVIRUS-------
 // Pedir dosis para Rotavirus
         System.out.println("");
         System.out.print("Ingrese el número de dosis administradas de Rotavirus: ");
         int dosisRotavirus = sc.nextInt();
-        Rotavirus rotavirus = new Rotavirus(ob1,dosisRotavirus); //OBJETO ROTAVIRUS
+        Rotavirus rotavirus = new Rotavirus(niño,dosisRotavirus); //OBJETO ROTAVIRUS
 
-        rotavirus.setDosisRequeridas();
-        rotavirus.verificarAlertaDosis();
-        rotavirus.calcularPorcentajeVacunacion(); //Calculamos el porcentaje de vacunacion
-        double porcentajeRotavirus = rotavirus.getPorcentajeVacunacion();
+        rotavirus.procesarVacuna(); //Metodo que procesa lo datos ingresados
+
+        double porcentajeRotavirus = rotavirus.calcularPorcentajeVacunacion();
         System.out.println("Porcentaje total de vacunación Rotavirus: " + porcentajeRotavirus + "%");
 
+        //------NEUMOCOCO------
 // Pedir dosis para Neumococo
         System.out.println("");
         System.out.print("Ingrese el número de dosis administradas de Neumococo: ");
-        int dosisNeumococo = sc.nextInt();
-        Neumococo neumococo = new Neumococo(ob1,dosisNeumococo); //OBJETO NEUMOCOCO
+        int dosisNeumococoadmin = sc.nextInt();
+        //OBJETO NEUMOCOCO //Se ingresa como parametro las dosis administradas y un objeto de tipo Niño
+        Neumococo neumococo = new Neumococo(niño,dosisNeumococoadmin);
 
-        neumococo.setDosisRequeridas();
-        neumococo.verificarAlertaDosis();
-        neumococo.calcularPorcentajeVacunacion(); //Calculamos el porcentaje de vacunacion
+        neumococo.procesarVacuna();
 
-        double porcentajeNeumococo = neumococo.getPorcentajeVacunacion();
+        double porcentajeNeumococo = neumococo.calcularPorcentajeVacunacion();
         System.out.println("Porcentaje total de vacunación Neumococo: " + porcentajeNeumococo + "%");
-
-
-
-
 
     }
 }

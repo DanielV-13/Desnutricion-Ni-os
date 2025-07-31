@@ -61,23 +61,13 @@ public class Rotavirus implements Vacuna {
         }
     }
 
-
-
-
-
-
-
-
-    public double getPorcentajeVacunacion() {
-
-        return porcentajeVacunacion;
+    //Metodo que llama a los demas metodos para procesar los datos de la vacuna
+    //Metodo void que hace los calculos por detras
+    public void procesarVacuna() {
+        this.setDosisRequeridas();
+        this.verificarAlertaDosis();
+        this.calcularPorcentajeVacunacion();
     }
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,7 @@ public class Niño extends Persona {
     private int mesesVida;
     private String sexo;
     //LinkedList para fecha de Nacimiento
-    public LinkedList<Integer>fechaNacimiento;
+    private LinkedList<Integer>fechaNacimiento;
 
 
 

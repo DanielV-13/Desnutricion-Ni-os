@@ -65,10 +65,10 @@ public class TallaEdad {
         // Verifica si hay datos para la edad del niño
         if (tablaTallaEdad.containsKey(edad)) {
             // Extrae talla ideal y desviación estándar desde el mapa
-            tallaIdeal = tablaTallaEdad.get(edad)[0]; //Funciona como un diccionario
+            tallaIdeal = tablaTallaEdad.get(edad)[0]; //Funciona como un diccionario en Python
             desviacionEstandar = tablaTallaEdad.get(edad)[1];
 
-            // Calcula el Z-Score con la fórmula estándar
+            // Calcula el Z-Score con la fórmula estándar de la OMS
             zScore = (niño.getTalla() - tallaIdeal) / desviacionEstandar;
         } else {
             // Si no hay datos, se deja Z-Score en 0
@@ -112,4 +112,15 @@ public class TallaEdad {
     public double getTallaIdeal() {
         return tallaIdeal;
     }
+    public void mostrarKPI() {
+        double zScore = calcularzScore();
+        System.out.println("\nESTOS SON LOS KPIs");
+        System.out.println("El niño tiene " + niño.getMesesVida() + " meses de edad");
+        System.out.println("La talla ideal del niño es de: "+ tallaIdeal);
+        System.out.println("La talla actual del niño es: "+niño.getTalla());
+        System.out.println("El Z-Score del niño es " + zScore);
+        analizarZScore();
+    }
+
+
 }
